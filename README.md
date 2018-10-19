@@ -14,4 +14,4 @@ android KeyStore demo
 
 在android4.3和android8.0上面经过实测，可以在手机重启后还原出本地保存的密钥。
 
->**注意：**对于SecretKey对象，处于安全考虑，在android上无法通过getEncoded()获取字节数组从而得到加密密钥。
+>**注意**：对于SecretKey对象，处于安全考虑，在android上无法通过getEncoded()获取字节数组从而得到加密密钥。
