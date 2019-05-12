@@ -1,6 +1,9 @@
 package com.example.cryptutils;
 
 import android.app.Activity;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
@@ -55,5 +58,31 @@ public class MainActivity extends Activity {
                 textShow.setText(decrypted);
             }
         });
+    }
+
+    public void invoke(){
+        Class clz = CryptoUtils.class;
+        try {
+            Object object=clz.newInstance();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void netInfo(){
+        Context context = this.getApplicationContext();
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);//获取系统的连接服务
+        NetworkInfo activeNetInfo = connectivityManager.getActiveNetworkInfo();//获取网络的连接情况
+        boolean isNet = activeNetInfo.isConnected();
+        if(activeNetInfo.getType()==ConnectivityManager.TYPE_WIFI){
+            //WIFI网络跳转的页面.
+        }else if(activeNetInfo.getType()==ConnectivityManager.TYPE_MOBILE) {
+            //3G网络跳转的页面
+        }
+        NetworkInfo wifiInfo = connectivityManager
+                .getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        boolean iswifi = wifiInfo.isConnected();
     }
 }
